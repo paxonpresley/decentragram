@@ -14,21 +14,21 @@ contract Decentragram {
     uint256 tipAmount;
     address payable author;
   }
-
+  // syntax is same as an index
   event ImageCreated(
-    uint256 id;
-    string hash;
-    string description;
-    uint256 tipAmount;
-    address payable author;
+    uint256 id,
+    string hash,
+    string description,
+    uint256 tipAmount, 
+    address payable author
   );
   
   // create images
-  function uploadImage(string memory _imgHash, string memory _description, string memory) public {
+  function uploadImage(string memory _imgHash, string memory _description) public {
     // Incriment image id
-    imageCount = imageCount ++;
+    imageCount ++;
     // add image contract
-    images [] = Image(  
+    images [imageCount] = Image(  
       imageCount,
       _imgHash,
       _description,
@@ -44,7 +44,7 @@ contract Decentragram {
       0, 
       msg.sender
       );
-      
+
   }
   // tip images
 

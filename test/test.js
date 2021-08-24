@@ -1,3 +1,5 @@
+const { assert } = require('chai')
+
 const Decentragram = artifacts.require('./Decentragram.sol')
 
 require('chai')
@@ -27,11 +29,18 @@ contract('Decentragram', ([deployer, author, tipper]) => {
   })
 
   describe('images', async () => {
-    let result 
+    let result;
+    const hash = '0x0abcd1234';
+
+    before(async (result) => {
+      result = await decentragram.uploadImage(hash, 'image desc', {from: author});
+      imageCount = await decentragram.imageCount();
+    })
+
     it('creates images', async () => {
-      result = await decentragram.uploadImage();
-      let image = await decentragram.images(1);
-      console.log(image);
+      // success
+      assert.equal(imageCount, 1);
+      console.log(result);
     })
   })
 })
