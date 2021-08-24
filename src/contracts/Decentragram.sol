@@ -4,6 +4,7 @@ contract Decentragram {
   string public name = "Decentragram";
 
   // store images
+  uint public imageCount = 0;
   mapping(uint => Image) public images;
 
   struct Image {
@@ -15,8 +16,11 @@ contract Decentragram {
   }
   // create images
   function uploadImage() public {
-    images[1] =
-    Image(
+    // Incriment image id
+    imageCount = imageCount ++;
+    // add image contract
+    images [] =
+    Image(  
       1,
       'aafadfa234235',
       'Hi guys check this shit out',
