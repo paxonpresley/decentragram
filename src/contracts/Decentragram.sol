@@ -3,7 +3,7 @@ pragma solidity ^0.5.0;
 contract Decentragram {
   string public name = "Decentragram";
 
-  // store images
+  // stoare images
   uint public imageCount = 0;
   mapping(uint => Image) public images;
 
@@ -14,19 +14,37 @@ contract Decentragram {
     uint256 tipAmount;
     address payable author;
   }
+
+  event ImageCreated(
+    uint256 id;
+    string hash;
+    string description;
+    uint256 tipAmount;
+    address payable author;
+  );
+  
   // create images
-  function uploadImage() public {
+  function uploadImage(string memory _imgHash, string memory _description, string memory) public {
     // Incriment image id
     imageCount = imageCount ++;
     // add image contract
-    images [] =
-    Image(  
-      1,
-      'aafadfa234235',
-      'Hi guys check this shit out',
+    images [] = Image(  
+      imageCount,
+      _imgHash,
+      _description,
       0,
-      address(0x0)
+      msg.sender
     );
+
+    // envoke the event
+    emit ImageCreated(
+      imageCount, 
+      _imgHash, 
+      _description, 
+      0, 
+      msg.sender
+      );
+      
   }
   // tip images
 
