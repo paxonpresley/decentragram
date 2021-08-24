@@ -65,7 +65,7 @@ contract('Decentragram', ([deployer, author, tipper]) => {
       //track the author balance before purchase
       let oldAuthorBalance;
       oldAuthorBalance = await web3.eth.getBalance(author);
-      oldAuthorBalance = new web3.utils.BN(oldAuthorBalance)
+      oldAuthorBalance = new web3.utils.BN(oldAuthorBalance);
 
       result = await decentragram.tipImageOwner(imageCount, { from: tipper, value: web3.utils.toWei('1', 'Ether') })
 
